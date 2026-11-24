@@ -11,9 +11,10 @@ export default function Home() {
       <a href="#book" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-3">Skip to booking</a>
       <Nav />
       <main id="top">
-        {/* Camp banner */}
+        {/* Demo + camp banners */}
+        <div role="note" className="bg-ink px-4 py-2 text-center text-sm font-medium text-white">Demo only: no appointments or camp registrations are sent from this website.</div>
         <a href="#camp" className="block bg-saffron text-center text-sm font-medium text-white">
-          <span className="block px-4 py-2">Free camp on {camp.date}. Register now &rarr;</span>
+          <span className="block px-4 py-2">SAMPLE camp (demo content): {camp.date}. See details &rarr;</span>
         </a>
 
         {/* Hero */}
@@ -48,7 +49,7 @@ export default function Home() {
                   <path d="M100 165c22 0 34-12 34-32-22 0-34 12-34 32z" fill="#f6efe0" opacity="0.85" />
                 </svg>
               </div>
-              <div className="float absolute -bottom-6 -left-8 rounded-2xl bg-white p-4 shadow-xl"><div className="text-xs text-ink/55">Next camp</div><div className="font-display text-lg text-moss-dark">13 Dec, free entry</div></div>
+              <div className="float absolute -bottom-6 -left-8 rounded-2xl bg-white p-4 shadow-xl"><div className="text-xs text-ink/55">Sample camp (demo)</div><div className="font-display text-lg text-moss-dark">13 Dec, free entry</div></div>
             </div>
           </div>
         </section>
@@ -89,17 +90,17 @@ export default function Home() {
           <Mandala className="spin-slow pointer-events-none absolute -left-32 top-1/2 h-[36rem] w-[36rem] -translate-y-1/2 text-white/10" />
           <div className="relative mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-2">
             <Reveal>
-              <p className="inline-block rounded-full bg-saffron px-4 py-1 text-sm font-medium text-white">Upcoming camp &middot; Free entry</p>
+              <p className="inline-block rounded-full bg-saffron px-4 py-1 text-sm font-medium text-white">Sample camp (demo) &middot; Not a real event</p>
               <h2 className="mt-4 font-display text-4xl md:text-5xl">{camp.title}</h2>
               <p className="mt-4 text-lg text-cream/80">{camp.date}<br />{camp.time}<br />{camp.where}</p>
               <div className="mt-7"><Countdown to={camp.iso} /></div>
-              <a href="#book" className="mt-8 inline-block rounded-full bg-saffron px-8 py-4 font-medium text-white shadow-lg transition hover:-translate-y-0.5">Register for the camp</a>
+              <a href="#book" className="mt-8 inline-block rounded-full bg-saffron px-8 py-4 font-medium text-white shadow-lg transition hover:-translate-y-0.5">See sample registration (demo)</a>
             </Reveal>
             <Reveal delay={150}>
               <div className="rounded-3xl bg-white/10 p-7 backdrop-blur">
                 <h3 className="font-display text-2xl">What you get</h3>
                 <ul className="mt-4 space-y-3">{camp.includes.map((c) => <li key={c} className="flex gap-3"><svg viewBox="0 0 24 24" width="22" height="22" className="mt-0.5 shrink-0 text-saffron" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5 9-10" /></svg>{c}</li>)}</ul>
-                <p className="mt-5 text-sm text-cream/60">Limited seats. Please carry old reports and a list of current medicines. (Sample camp details for this demo.)</p>
+                <p className="mt-5 text-sm text-cream/60">This camp is invented sample content for the website demo. It is not a real event.</p>
               </div>
             </Reveal>
           </div>
@@ -118,8 +119,8 @@ export default function Home() {
         {/* Booking */}
         <section id="book" className="bg-gradient-to-b from-sand/60 to-cream py-20">
           <div className="mx-auto max-w-4xl px-5">
-            <Reveal><div className="mb-10 text-center"><p className="text-sm uppercase tracking-widest text-saffron">Book a visit</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Request an appointment</h2><p className="mt-3 text-ink/70">Fill in the form and our front desk will call to confirm.</p></div></Reveal>
-            <Reveal><Booking /></Reveal>
+            <Reveal><div className="mb-10 text-center"><p className="text-sm uppercase tracking-widest text-saffron">Book a visit</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Request an appointment</h2><p className="mt-3 text-ink/70">This is a demo form. To book a real appointment, call <a className="font-medium text-moss underline" href={`tel:${HOSPITAL.tel}`}>{HOSPITAL.phone}</a>.</p></div></Reveal>
+            <Reveal><div role="note" className="mb-4 rounded-2xl border-2 border-saffron bg-saffron/10 px-5 py-3 text-center font-medium text-ink">Demo only: no appointments or camp registrations are sent. Nothing you type here leaves your browser.</div><Booking /></Reveal>
           </div>
         </section>
 

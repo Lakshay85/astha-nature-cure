@@ -1,6 +1,6 @@
 # Astha Yoga & Nature Cure Hospital: website
 
-Demo website concept for Astha Yoga & Nature Cure Hospital, Rohtak, Haryana (since 1995).
+Demo-only website concept (no appointments or registrations are sent) for Astha Yoga & Nature Cure Hospital, Rohtak, Haryana (since 1995).
 
 Live: see the Vercel deployment linked on the repo.
 

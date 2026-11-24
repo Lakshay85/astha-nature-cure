@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const links = [["Treatments", "#treatments"], ["Camp", "#camp"], ["Conditions", "#conditions"], ["Visit", "#visit"]];
+const links = [["Treatments", "#treatments"], ["Sample camp", "#camp"], ["Conditions", "#conditions"], ["Visit", "#visit"]];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
