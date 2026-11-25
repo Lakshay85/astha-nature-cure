@@ -5,7 +5,7 @@ import Booking from "@/components/Booking";
 import Countdown from "@/components/Countdown";
 import { Icon, Leaf, Mandala } from "@/components/Icons";
 import { posts, BYLINE } from "@/lib/posts";
-import { treatments, camp, conditions, HOSPITAL } from "@/lib/data";
+import { treatments, camp, conditions, faqs, HOSPITAL } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -150,6 +150,37 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Reviews */}
+        <section id="reviews" className="mx-auto max-w-6xl px-5 py-20">
+          <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Patient reviews</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">What patients say</h2><p className="mt-4 max-w-2xl text-ink/70">Public reviews from our Google listing, shown as written.</p></Reveal>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {[
+              { name: "Akhilesh", meta: "Google Local Guide", text: "Uncle ji Nice \u{1F44D} clinic", note: null },
+              { name: "Sam", meta: "Google review", text: "\u0915\u0932\u094D\u092A\u0924\u0930\u0941 \u0915\u0940 \u0924\u0930\u0939 \u0939\u0940 \u092E\u0930\u094D\u091C \u0915\u0940 \u0926\u0935\u093E", note: "English: \u201CMedicine for the disease is like Kalpataru\u201D (translated by Google)" },
+            ].map((r, i) => (
+              <Reveal key={r.name} delay={i * 100}>
+                <figure className="flex h-full flex-col rounded-3xl bg-white p-7 shadow-sm">
+                  <div className="text-xl tracking-widest text-saffron" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <blockquote className="mt-4 font-display text-2xl leading-snug text-moss-dark">&ldquo;{r.text}&rdquo;</blockquote>
+                  {r.note && <p className="mt-2 text-sm text-ink/55">{r.note}</p>}
+                  <figcaption className="mt-auto pt-6 text-sm"><span className="font-medium text-ink">{r.name}</span><span className="text-ink/55"> &middot; {r.meta}</span></figcaption>
+                </figure>
+              </Reveal>
+            ))}
+            <Reveal delay={200}>
+              <div className="flex h-full flex-col justify-between rounded-3xl bg-moss-dark p-7 text-cream">
+                <div>
+                  <div className="font-display text-6xl">4.3</div>
+                  <div className="mt-1 text-xl tracking-widest text-saffron" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                  <p className="mt-3 text-cream/80">Average rating from 4 Google reviews.</p>
+                </div>
+                <a href={HOSPITAL.map} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block text-sm font-medium text-saffron hover:underline">See all reviews on Google &rarr;</a>
+              </div>
+            </Reveal>
+          </div>
+          <p className="mt-6 text-xs text-ink/50">Reviews are from Google as of 25 November 2026 and may change. They are one person&apos;s experience and not a promise of results.</p>
+        </section>
+
         {/* Conditions */}
         <section id="conditions" className="mx-auto max-w-6xl px-5 py-20">
           <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Who we help</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Conditions we treat</h2><p className="mt-4 max-w-2xl text-ink/70">Patients come to us for these and related concerns. A physician will tell you honestly what natural therapy can and cannot do in your case.</p></Reveal>
@@ -176,6 +207,25 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="bg-sand/50 py-20">
+          <div className="mx-auto max-w-3xl px-5">
+            <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Good to know</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Frequently asked questions</h2></Reveal>
+            <div className="mt-10 space-y-3">
+              {faqs.map(([q, a]) => (
+                <details key={q} className="group rounded-2xl bg-white px-6 py-1 shadow-sm open:shadow-md">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-display text-xl text-moss-dark [&::-webkit-details-marker]:hidden">
+                    {q}
+                    <svg viewBox="0 0 24 24" width="22" height="22" className="shrink-0 text-saffron transition group-open:rotate-180" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+                  </summary>
+                  <p className="pb-5 leading-relaxed text-ink/75">{a}</p>
+                </details>
+              ))}
+            </div>
+            <p className="mt-6 text-center text-sm text-ink/60">Still have a question? Call <a className="font-medium text-moss underline" href={`tel:${HOSPITAL.tel}`}>{HOSPITAL.phone}</a> or <a className="font-medium text-moss underline" href="#book">request an appointment</a>.</p>
           </div>
         </section>
 
@@ -211,7 +261,7 @@ export default function Home() {
           <nav aria-label="Footer">
             <h3 className="font-display text-lg text-cream">Quick links</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {[["Treatments", "#treatments"], ["Sample camp", "#camp"], ["Gallery", "#gallery"], ["Conditions we treat", "#conditions"], ["Blog", "#blog"], ["Book appointment", "#book"], ["Visit us", "#visit"]].map(([l, h]) => <li key={h}><a href={h} className="hover:text-white hover:underline">{l}</a></li>)}
+              {[["Treatments", "#treatments"], ["Sample camp", "#camp"], ["Gallery", "#gallery"], ["Conditions we treat", "#conditions"], ["Reviews", "#reviews"], ["Blog", "#blog"], ["FAQ", "#faq"], ["Book appointment", "#book"], ["Visit us", "#visit"]].map(([l, h]) => <li key={h}><a href={h} className="hover:text-white hover:underline">{l}</a></li>)}
             </ul>
           </nav>
           <div>
