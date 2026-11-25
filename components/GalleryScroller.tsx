@@ -23,6 +23,35 @@ export default function GalleryScroller({ items }: { items: Item[] }) {
     return () => window.removeEventListener("resize", update);
   }, [update]);
 
+  const anim = useRef<number | null>(null);
+
+  // JS-driven slide so it animates even where native smooth scrolling is off
+  const slideTo = useCallback((target: number, ms = 750) => {
+    const el = ref.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    const to = Math.max(0, Math.min(max, target));
+    const from = el.scrollLeft;
+    if (anim.current) cancelAnimationFrame(anim.current);
+    if (Math.abs(to - from) < 2) return;
+    el.style.scrollSnapType = "none";
+    el.style.scrollBehavior = "auto";
+    const t0 = performance.now();
+    const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - t0) / ms);
+      el.scrollLeft = from + (to - from) * ease(t);
+      if (t < 1) anim.current = requestAnimationFrame(tick);
+      else { anim.current = null; el.style.scrollSnapType = ""; el.style.scrollBehavior = ""; update(); }
+    };
+    anim.current = requestAnimationFrame(tick);
+  }, [update]);
+
+  const stepSize = () => {
+    const card = ref.current?.querySelector("figure") as HTMLElement | null;
+    return (card?.offsetWidth ?? 280) + 16;
+  };
+
   const paused = useRef(false);
   const visible = useRef(false);
 
@@ -34,13 +63,12 @@ export default function GalleryScroller({ items }: { items: Item[] }) {
     io.observe(el);
     const id = window.setInterval(() => {
       if (paused.current || !visible.current || document.hidden) return;
-      const card = el.querySelector("figure") as HTMLElement | null;
-      const step = (card?.offsetWidth ?? 280) + 16;
-      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) el.scrollTo({ left: 0, behavior: "smooth" });
-      else el.scrollBy({ left: step, behavior: "smooth" });
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) slideTo(0, 1100);
+      else slideTo(el.scrollLeft + stepSize());
     }, AUTO_MS);
     return () => { window.clearInterval(id); io.disconnect(); };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slideTo]);
 
   const pause = () => { paused.current = true; };
   const resume = () => { paused.current = false; };
@@ -48,9 +76,13 @@ export default function GalleryScroller({ items }: { items: Item[] }) {
   const go = (dir: 1 | -1) => {
     const el = ref.current;
     if (!el) return;
-    const card = el.querySelector("figure") as HTMLElement | null;
-    const step = (card?.offsetWidth ?? 280) + 16;
-    el.scrollBy({ left: dir * step * 2, behavior: "smooth" });
+    paused.current = true;
+    slideTo(el.scrollLeft + dir * stepSize(), 650);
+  };
+
+  const onKey = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
   };
 
   const btn = "absolute top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white text-moss-dark shadow-lg ring-1 ring-moss/20 transition hover:bg-moss hover:text-white disabled:pointer-events-none disabled:opacity-0";
@@ -63,7 +95,7 @@ export default function GalleryScroller({ items }: { items: Item[] }) {
       <button type="button" aria-label="Next photos" disabled={atEnd} onClick={() => go(1)} className={`${btn} -right-4 md:-right-6`}>
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M9 5l7 7-7 7" /></svg>
       </button>
-      <div ref={ref} onScroll={update} className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" tabIndex={0} aria-label="Photo gallery">
+      <div ref={ref} onScroll={update} onKeyDown={onKey} className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" tabIndex={0} aria-label="Photo gallery">
         {items.map((it) => (
           <figure key={it.src} className="w-[72%] shrink-0 snap-start overflow-hidden rounded-3xl bg-white shadow-sm sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
             <div className="aspect-[4/5] overflow-hidden">
