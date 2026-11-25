@@ -13,12 +13,6 @@ export default function Home() {
       <a href="#book" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-3">Skip to booking</a>
       <Nav />
       <main id="top">
-        {/* Demo + camp banners */}
-        <div role="note" className="bg-ink px-4 py-2 text-center text-sm font-medium text-white">Demo site: the camp shown is sample content. The appointment form opens WhatsApp, and nothing is sent until you press Send.</div>
-        <a href="#camp" className="block bg-saffron text-center text-sm font-medium text-white">
-          <span className="block px-4 py-2">SAMPLE camp (demo content): {camp.date}. See details &rarr;</span>
-        </a>
-
         {/* Hero */}
         <section className="relative overflow-hidden bg-gradient-to-b from-sand/70 to-cream">
           <Mandala className="spin-slow pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] text-moss/15 md:-right-24 md:-top-24 md:h-[44rem] md:w-[44rem]" />
@@ -47,7 +41,7 @@ export default function Home() {
               </div>
               <div className="float absolute -left-10 bottom-24 hidden h-36 w-36 overflow-hidden rounded-[58%_42%_55%_45%/48%_58%_42%_52%] bg-moss shadow-xl ring-4 ring-cream lg:block" style={{ "--r": "-6deg" } as React.CSSProperties}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/img/entrance.jpg" alt="Astha hospital entrance" width={144} height={144} className="h-full w-full object-cover object-center" />
+                <img src="/img/gp-frontage.jpg" alt="Astha Nature Cure Hospital frontage" width={144} height={144} className="h-full w-full object-cover object-center" />
               </div>
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-2xl bg-white px-6 py-3 text-center shadow-xl"><div className="text-xs uppercase tracking-widest text-saffron">Meet the director</div><div className="font-display text-xl text-moss-dark">Dr. Gaurav Rajput</div><div className="text-sm text-ink/60">Director</div></div>
             </div>
@@ -61,17 +55,6 @@ export default function Home() {
               <div key={a}><div className="font-display text-2xl">{a}</div><div className="mt-1 text-sm text-cream/70">{b}</div></div>
             ))}
           </div>
-        </section>
-
-        {/* Why */}
-        <section className="mx-auto max-w-6xl px-5 py-16">
-          <Reveal>
-            <div className="grid divide-y divide-moss/20 overflow-hidden rounded-3xl border border-moss/20 bg-white shadow-sm md:grid-cols-3 md:divide-x md:divide-y-0">
-              {[["Drug-free care", "Natural therapies and yoga that work with the body instead of masking symptoms."], ["Three decades of experience", "Serving Rohtak and nearby towns since 1995 with a steady, patient-first approach."], ["One roof, many therapies", "Acupressure, hydro therapy, Ceragem, Sujok and more, combined into a plan for you."]].map(([t, d]) => (
-                <div key={t} className="p-8"><h3 className="font-display text-2xl text-moss-dark">{t}</h3><p className="mt-3 text-ink/70">{d}</p></div>
-              ))}
-            </div>
-          </Reveal>
         </section>
 
         {/* Treatments */}
@@ -120,7 +103,7 @@ export default function Home() {
         {/* Gallery */}
         <section id="gallery" className="mx-auto max-w-6xl px-5 py-20">
           <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Inside the hospital</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Our hospital and people</h2></Reveal>
-          <GalleryScroller items={[["/img/reception.jpg", "Reception", 358, 478], ["/img/team.jpg", "Our team", 638, 478], ["/img/team2.jpg", "Our team", 638, 478], ["/img/doctor-desk.jpg", "Dr. Gaurav Rajput", 540, 960], ["/img/camp.jpg", "Community health camp", 638, 478]].map(([src, cap, w, h]) => ({ src: src as string, cap: cap as string, w: w as number, h: h as number }))} />
+          <GalleryScroller items={[["/img/gp-frontage.jpg", "Hospital frontage", 358, 478], ["/img/gp-reception.jpg", "Reception", 638, 478], ["/img/gp-therapy.jpg", "Therapy session", 638, 478], ["/img/gp-noticeboard.jpg", "Services notice board", 358, 478], ["/img/gp-consult.jpg", "Consultation room", 638, 478], ["/img/gp-waiting.jpg", "Waiting area", 638, 478], ["/img/team.jpg", "Our team", 638, 478], ["/img/team2.jpg", "Our team", 638, 478], ["/img/camp.jpg", "Community health camp", 638, 478]].map(([src, cap, w, h]) => ({ src: src as string, cap: cap as string, w: w as number, h: h as number }))} />
         </section>
 
         {/* Hospital tour */}
@@ -136,7 +119,7 @@ export default function Home() {
                 </div>
               </Reveal>
               <div className="grid grid-cols-2 gap-4">
-                {[["/img/tour-reception.jpg", "Reception"], ["/img/tour-waiting.jpg", "Waiting area"], ["/img/tour-consult.jpg", "Consultation room"], ["/img/tour-therapy.jpg", "Therapy area"]].map(([src, cap], i) => (
+                {[["/img/gp-reception.jpg", "Reception"], ["/img/gp-waiting.jpg", "Waiting area"], ["/img/gp-consult.jpg", "Consultation room"], ["/img/gp-therapy.jpg", "Therapy area"]].map(([src, cap], i) => (
                   <Reveal key={src} delay={i * 90}>
                     <figure className="overflow-hidden rounded-2xl bg-white shadow-sm">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
