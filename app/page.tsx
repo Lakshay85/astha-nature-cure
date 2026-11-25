@@ -38,16 +38,9 @@ export default function Home() {
               </ul>
             </div>
             <div className="relative mx-auto hidden w-full max-w-sm md:block" aria-hidden="true">
-              <div className="aspect-[4/5] rounded-[40%_40%_1.5rem_1.5rem] bg-moss p-6 shadow-2xl">
-                <svg viewBox="0 0 200 250" className="h-full w-full">
-                  <circle cx="100" cy="95" r="52" fill="#d98324" opacity="0.95" />
-                  <circle cx="100" cy="95" r="70" fill="none" stroke="#f6efe0" strokeOpacity="0.3" />
-                  <path d="M0 190c40-30 80-30 100-10s60 20 100-10v70H0z" fill="#f6efe0" opacity="0.18" />
-                  <path d="M0 215c50-25 90-20 120 0s60 10 80-5v40H0z" fill="#f6efe0" opacity="0.28" />
-                  <path d="M100 232V150" stroke="#f6efe0" strokeWidth="3" />
-                  <path d="M100 185c-26 0-38-14-38-36 26 0 38 14 38 36z" fill="#f6efe0" />
-                  <path d="M100 165c22 0 34-12 34-32-22 0-34 12-34 32z" fill="#f6efe0" opacity="0.85" />
-                </svg>
+              <div className="aspect-[3/4] overflow-hidden rounded-[40%_40%_1.5rem_1.5rem] bg-moss shadow-2xl ring-8 ring-moss">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/img/entrance.jpg" alt="Hospital entrance and signboard" width={900} height={1200} className="h-full w-full object-cover" fetchPriority="high" />
               </div>
               <div className="float absolute -bottom-6 -left-8 rounded-2xl bg-white p-4 shadow-xl"><div className="text-xs text-ink/55">Sample camp (demo)</div><div className="font-display text-lg text-moss-dark">13 Dec, free entry</div></div>
             </div>
@@ -103,6 +96,24 @@ export default function Home() {
                 <p className="mt-5 text-sm text-cream/60">This camp is invented sample content for the website demo. It is not a real event.</p>
               </div>
             </Reveal>
+          </div>
+        </section>
+
+        {/* Gallery */}
+        <section id="gallery" className="mx-auto max-w-6xl px-5 py-20">
+          <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Inside the hospital</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Our hospital and people</h2></Reveal>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[["/img/reception.jpg", "Reception", 358, 478], ["/img/team.jpg", "Our team", 638, 478], ["/img/team2.jpg", "Our team", 638, 478], ["/img/camp.jpg", "Community health camp", 638, 478]].map(([src, cap, w, h], i) => (
+              <Reveal key={src as string} delay={i * 90}>
+                <figure className="group overflow-hidden rounded-3xl bg-white shadow-sm">
+                  <div className="aspect-[4/5] overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src as string} alt={cap as string} width={w as number} height={h as number} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  </div>
+                  <figcaption className="px-5 py-3 text-sm font-medium text-moss-dark">{cap}</figcaption>
+                </figure>
+              </Reveal>
+            ))}
           </div>
         </section>
 

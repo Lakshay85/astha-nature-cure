@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const links = [["Treatments", "#treatments"], ["Sample camp", "#camp"], ["Conditions", "#conditions"], ["Visit", "#visit"]];
+const links = [["Treatments", "#treatments"], ["Sample camp", "#camp"], ["Gallery", "#gallery"], ["Conditions", "#conditions"], ["Visit", "#visit"]];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -9,7 +9,8 @@ export default function Nav() {
     <header className="sticky top-0 z-40 border-b border-ink/10 bg-cream/85 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
         <a href="#top" className="flex items-center gap-2.5 font-display text-xl text-moss-dark">
-          <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#2f5d3a" /><path d="M20 8c6 5 8 11 0 24C12 19 14 13 20 8z" fill="#f6efe0" /><path d="M20 14v16" stroke="#2f5d3a" strokeWidth="1.5" /></svg>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/logo.png" alt="" width={34} height={34} className="h-[34px] w-[34px] rounded-full" />
           Astha <span className="hidden sm:inline text-ink/60 text-base">Yoga &amp; Nature Cure Hospital</span>
         </a>
         <nav className="hidden items-center gap-7 md:flex">
