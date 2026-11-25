@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
+import GalleryScroller from "@/components/GalleryScroller";
 import Booking from "@/components/Booking";
 import Countdown from "@/components/Countdown";
 import { Icon, Leaf, Mandala } from "@/components/Icons";
@@ -105,19 +106,7 @@ export default function Home() {
         {/* Gallery */}
         <section id="gallery" className="mx-auto max-w-6xl px-5 py-20">
           <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Inside the hospital</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Our hospital and people</h2></Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[["/img/reception.jpg", "Reception", 358, 478], ["/img/team.jpg", "Our team", 638, 478], ["/img/team2.jpg", "Our team", 638, 478], ["/img/doctor-desk.jpg", "Dr. Gaurav Rajput", 540, 960], ["/img/camp.jpg", "Community health camp", 638, 478]].map(([src, cap, w, h], i) => (
-              <Reveal key={src as string} delay={i * 90}>
-                <figure className="group overflow-hidden rounded-3xl bg-white shadow-sm">
-                  <div className="aspect-[4/5] overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={src as string} alt={cap as string} width={w as number} height={h as number} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                  </div>
-                  <figcaption className="px-5 py-3 text-sm font-medium text-moss-dark">{cap}</figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+          <GalleryScroller items={[["/img/reception.jpg", "Reception", 358, 478], ["/img/team.jpg", "Our team", 638, 478], ["/img/team2.jpg", "Our team", 638, 478], ["/img/doctor-desk.jpg", "Dr. Gaurav Rajput", 540, 960], ["/img/camp.jpg", "Community health camp", 638, 478]].map(([src, cap, w, h]) => ({ src: src as string, cap: cap as string, w: w as number, h: h as number }))} />
         </section>
 
         {/* Hospital tour */}
