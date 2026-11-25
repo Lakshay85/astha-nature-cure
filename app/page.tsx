@@ -115,28 +115,19 @@ export default function Home() {
 
         {/* Hospital tour */}
         <section id="tour" className="bg-sand/50 py-20">
-          <div className="mx-auto max-w-6xl px-5">
-            <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Take a look inside</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">A walk through the hospital</h2><p className="mt-4 max-w-2xl text-ink/70">From the entrance and reception to the consultation room and therapy area. Clip from the hospital&apos;s own Instagram.</p></Reveal>
-            <div className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-              <Reveal>
-                <div className="overflow-hidden rounded-3xl bg-ink shadow-xl">
-                  <video controls playsInline preload="none" poster="/img/tour-poster.jpg" className="aspect-video w-full" aria-label="Walkthrough of Astha Yoga & Nature Cure Hospital">
-                    <source src="/img/tour.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </Reveal>
-              <div className="grid grid-cols-2 gap-4">
-                {[["/img/gp-reception.jpg", "Reception"], ["/img/gp-waiting.jpg", "Waiting area"], ["/img/gp-consult.jpg", "Consultation room"], ["/img/gp-therapy.jpg", "Therapy area"]].map(([src, cap], i) => (
-                  <Reveal key={src} delay={i * 90}>
-                    <figure className="overflow-hidden rounded-2xl bg-white shadow-sm">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={src} alt={cap} width={480} height={270} loading="lazy" className="aspect-video w-full object-cover" />
-                      <figcaption className="px-3 py-2 text-sm font-medium text-moss-dark">{cap}</figcaption>
-                    </figure>
-                  </Reveal>
-                ))}
+          <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 lg:grid-cols-5 lg:gap-12">
+            <Reveal className="lg:col-span-2">
+              <div>
+<p className="text-sm uppercase tracking-widest text-saffron">Take a look inside</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">A walk through the hospital</h2><p className="mt-4 text-ink/70">From the entrance and reception to the consultation room and therapy area. Clip from the hospital&apos;s own Instagram.</p>
               </div>
-            </div>
+            </Reveal>
+            <Reveal className="lg:col-span-3">
+              <div className="overflow-hidden rounded-3xl bg-ink shadow-xl">
+                <video controls playsInline preload="none" poster="/img/tour-poster.jpg" className="aspect-video w-full" aria-label="Walkthrough of Astha Yoga & Nature Cure Hospital">
+                  <source src="/img/tour.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </Reveal>
           </div>
         </section>
 
