@@ -36,11 +36,3 @@ export const camp = {
 
 export const slots = ["6:30 AM", "7:30 AM", "8:30 AM", "9:30 AM", "10:30 AM", "11:30 AM", "12:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM"];
 
-export const faqs: [string, string][] = [
-  ["What is nature cure?", "Nature cure (naturopathy) is an approach that uses yoga, water, steam, pressure points and daily-routine changes to support the body instead of relying on medicines. It works alongside, not instead of, emergency or specialist medical care."],
-  ["Is the treatment drug-free?", "Our therapies are drug-free: yoga, acupressure, steam bath, hydro therapy, Ceragem, magnet therapy, Sujok, and chromo and veins therapy. If you already take prescribed medicine, do not stop or change it without talking to your own doctor."],
-  ["What conditions do you treat?", "People come to us for cervical and back pain, joint and knee pain, migraine, sinus, stress and depression, weight, digestion, diabetes and other lifestyle concerns. A physician will tell you honestly what natural therapy can and cannot do in your case."],
-  ["How long will treatment take?", "It depends on your condition and on the plan your physician suggests at the first consultation. Call us on +91 98960 91578 if you want to ask about sessions, or about any longer stay, before you travel."],
-  ["What should I bring to the first visit?", "Bring any earlier reports and prescriptions, a list of the medicines you take, and a photo ID. Wear loose, comfortable clothes. Opening hours are 6:30 AM to 12:30 PM and 4:00 PM to 8:00 PM."],
-  ["What are the fees, and is insurance accepted?", "We do not publish fees or insurance details on this site. Please call +91 98960 91578 to ask about consultation fees, payment methods and whether any insurance applies."],
-];

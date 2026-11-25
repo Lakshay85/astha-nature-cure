@@ -5,7 +5,7 @@ import Booking from "@/components/Booking";
 import Countdown from "@/components/Countdown";
 import { Icon, Leaf, Mandala } from "@/components/Icons";
 import { posts, BYLINE } from "@/lib/posts";
-import { treatments, camp, conditions, faqs, HOSPITAL } from "@/lib/data";
+import { treatments, camp, conditions, HOSPITAL } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -210,26 +210,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section id="faq" className="bg-sand/50 py-20">
-          <div className="mx-auto max-w-3xl px-5">
-            <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Good to know</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Frequently asked questions</h2></Reveal>
-            <div className="mt-10 space-y-3">
-              {faqs.map(([q, a]) => (
-                <details key={q} className="group rounded-2xl bg-white px-6 py-1 shadow-sm open:shadow-md">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-display text-xl text-moss-dark [&::-webkit-details-marker]:hidden">
-                    {q}
-                    <svg viewBox="0 0 24 24" width="22" height="22" className="shrink-0 text-saffron transition group-open:rotate-180" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-                  </summary>
-                  <p className="pb-5 leading-relaxed text-ink/75">{a}</p>
-                </details>
-              ))}
-            </div>
-            <p className="mt-6 text-center text-sm text-ink/60">Still have a question? Call <a className="font-medium text-moss underline" href={`tel:${HOSPITAL.tel}`}>{HOSPITAL.phone}</a> or <a className="font-medium text-moss underline" href="#book">request an appointment</a>.</p>
-          </div>
-        </section>
-
-        {/* Booking */}
         <section id="book" className="bg-gradient-to-b from-sand/60 to-cream py-20">
           <div className="mx-auto max-w-4xl px-5">
             <Reveal><div className="mb-10 text-center"><p className="text-sm uppercase tracking-widest text-saffron">Book a visit</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Request an appointment</h2><p className="mt-3 text-ink/70">The form opens WhatsApp with your details ready to send. Prefer to call? <a className="font-medium text-moss underline" href={`tel:${HOSPITAL.tel}`}>{HOSPITAL.phone}</a>.</p></div></Reveal>
@@ -261,7 +241,7 @@ export default function Home() {
           <nav aria-label="Footer">
             <h3 className="font-display text-lg text-cream">Quick links</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {[["Treatments", "#treatments"], ["Sample camp", "#camp"], ["Gallery", "#gallery"], ["Conditions we treat", "#conditions"], ["Reviews", "#reviews"], ["Blog", "#blog"], ["FAQ", "#faq"], ["Book appointment", "#book"], ["Visit us", "#visit"]].map(([l, h]) => <li key={h}><a href={h} className="hover:text-white hover:underline">{l}</a></li>)}
+              {[["Treatments", "#treatments"], ["Sample camp", "#camp"], ["Gallery", "#gallery"], ["Conditions we treat", "#conditions"], ["Reviews", "#reviews"], ["Blog", "#blog"], ["Book appointment", "#book"], ["Visit us", "#visit"]].map(([l, h]) => <li key={h}><a href={h} className="hover:text-white hover:underline">{l}</a></li>)}
             </ul>
           </nav>
           <div>
