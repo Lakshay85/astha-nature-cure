@@ -37,12 +37,12 @@ export default function Home() {
                 <li><b className="font-display text-2xl text-moss-dark">8</b> therapies</li>
               </ul>
             </div>
-            <div className="relative mx-auto hidden w-full max-w-sm md:block" aria-hidden="true">
+            <div className="relative mx-auto w-full max-w-sm">
               <div className="aspect-[3/4] overflow-hidden rounded-[40%_40%_1.5rem_1.5rem] bg-moss shadow-2xl ring-8 ring-moss">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/img/entrance.jpg" alt="Hospital entrance and signboard" width={900} height={1200} className="h-full w-full object-cover" fetchPriority="high" />
+                <img src="/img/director.jpg" alt="Dr. Gaurav Rajput, Director" width={636} height={848} className="h-full w-full object-cover object-top" fetchPriority="high" />
               </div>
-              <div className="float absolute -bottom-6 -left-8 rounded-2xl bg-white p-4 shadow-xl"><div className="text-xs text-ink/55">Sample camp (demo)</div><div className="font-display text-lg text-moss-dark">13 Dec, free entry</div></div>
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-2xl bg-white px-6 py-3 text-center shadow-xl"><div className="text-xs uppercase tracking-widest text-saffron">Meet the director</div><div className="font-display text-xl text-moss-dark">Dr. Gaurav Rajput</div><div className="text-sm text-ink/60">Director</div></div>
             </div>
           </div>
         </section>
