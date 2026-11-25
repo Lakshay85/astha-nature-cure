@@ -15,3 +15,20 @@ describe("validateBooking", () => {
   it("limits notes", () => expect(validateBooking({ ...ok, notes: "x".repeat(401) }, today).notes).toBeTruthy());
   it("reference is stable", () => { expect(reference(ok)).toBe(reference({ ...ok })); expect(reference(ok)).toMatch(/^AST-[0-9A-Z]{6}$/); });
 });
+
+import { whatsappUrl, whatsappMessage, WA_NUMBER } from "../lib/validate";
+describe("whatsapp link", () => {
+  const v = { name: "Asha Verma", phone: "9876543210", age: "45", treatment: "Yoga", date: "2026-12-01", slot: "6:30 AM", notes: "Back pain & stiffness" };
+  it("targets the configured number", () => {
+    expect(whatsappUrl(v).startsWith(`https://wa.me/${WA_NUMBER}?text=`)).toBe(true);
+    expect(WA_NUMBER).toBe("919911490501");
+  });
+  it("round-trips every detail through encoding", () => {
+    const text = decodeURIComponent(whatsappUrl(v).split("text=")[1]);
+    for (const x of ["Asha Verma", "9876543210", "45", "Yoga", "6:30 AM", "Back pain & stiffness"]) expect(text).toContain(x);
+    expect(text).toBe(whatsappMessage(v));
+  });
+  it("omits empty optional fields", () => {
+    expect(whatsappMessage({ ...v, age: "", notes: "" })).not.toMatch(/Age:|Notes:/);
+  });
+});

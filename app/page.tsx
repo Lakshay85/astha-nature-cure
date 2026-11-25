@@ -14,7 +14,7 @@ export default function Home() {
       <Nav />
       <main id="top">
         {/* Demo + camp banners */}
-        <div role="note" className="bg-ink px-4 py-2 text-center text-sm font-medium text-white">Demo only: no appointments or camp registrations are sent from this website.</div>
+        <div role="note" className="bg-ink px-4 py-2 text-center text-sm font-medium text-white">Demo site: the camp shown is sample content. The appointment form opens WhatsApp, and nothing is sent until you press Send.</div>
         <a href="#camp" className="block bg-saffron text-center text-sm font-medium text-white">
           <span className="block px-4 py-2">SAMPLE camp (demo content): {camp.date}. See details &rarr;</span>
         </a>
@@ -91,7 +91,7 @@ export default function Home() {
               <h2 className="mt-4 font-display text-4xl md:text-5xl">{camp.title}</h2>
               <p className="mt-4 text-lg text-cream/80">{camp.date}<br />{camp.time}<br />{camp.where}</p>
               <div className="mt-7"><Countdown to={camp.iso} /></div>
-              <a href="#book" className="mt-8 inline-block rounded-full bg-saffron px-8 py-4 font-medium text-white shadow-lg transition hover:-translate-y-0.5">See sample registration (demo)</a>
+              <a href="#book" className="mt-8 inline-block rounded-full bg-saffron px-8 py-4 font-medium text-white shadow-lg transition hover:-translate-y-0.5">See sample camp registration (demo)</a>
             </Reveal>
             <Reveal delay={150}>
               <div className="rounded-3xl bg-white/10 p-7 backdrop-blur">
@@ -168,8 +168,8 @@ export default function Home() {
         {/* Booking */}
         <section id="book" className="bg-gradient-to-b from-sand/60 to-cream py-20">
           <div className="mx-auto max-w-4xl px-5">
-            <Reveal><div className="mb-10 text-center"><p className="text-sm uppercase tracking-widest text-saffron">Book a visit</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Request an appointment</h2><p className="mt-3 text-ink/70">This is a demo form. To book a real appointment, call <a className="font-medium text-moss underline" href={`tel:${HOSPITAL.tel}`}>{HOSPITAL.phone}</a>.</p></div></Reveal>
-            <Reveal><div role="note" className="mb-4 rounded-2xl border-2 border-saffron bg-saffron/10 px-5 py-3 text-center font-medium text-ink">Demo only: no appointments or camp registrations are sent. Nothing you type here leaves your browser.</div><Booking /></Reveal>
+            <Reveal><div className="mb-10 text-center"><p className="text-sm uppercase tracking-widest text-saffron">Book a visit</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Request an appointment</h2><p className="mt-3 text-ink/70">The form opens WhatsApp with your details ready to send. Prefer to call? <a className="font-medium text-moss underline" href={`tel:${HOSPITAL.tel}`}>{HOSPITAL.phone}</a>.</p></div></Reveal>
+            <Reveal><div role="note" className="mb-4 rounded-2xl border-2 border-saffron bg-saffron/10 px-5 py-3 text-center font-medium text-ink">Appointment requests open in WhatsApp. Nothing is sent until you press Send there. The camp shown on this site is sample content.</div><Booking /></Reveal>
           </div>
         </section>
 
@@ -212,7 +212,7 @@ export default function Home() {
           </div>
         </div>
         <div className="border-t border-white/10 px-5 py-5 text-center text-xs text-cream/55">
-          <p>Demo website concept. The upcoming camp and the booking form are sample content. No appointments or registrations are sent from this site.</p>
+          <p>Demo website. The upcoming camp is sample content. The appointment form opens WhatsApp and nothing is sent until you press Send there.</p>
           <p className="mt-1">&copy; {HOSPITAL.name}, Rohtak, Haryana. Natural therapies support, and do not replace, medical care.</p>
         </div>
       </footer>

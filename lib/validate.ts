@@ -23,3 +23,24 @@ export function reference(v: BookingInput): string {
   for (const c of v.name + v.phone + v.date + v.slot) h = (h * 31 + c.charCodeAt(0)) >>> 0;
   return "AST-" + h.toString(36).toUpperCase().padStart(6, "0").slice(0, 6);
 }
+
+export const WA_NUMBER = "919911490501";
+
+export function whatsappMessage(v: BookingInput): string {
+  const date = v.date ? new Date(v.date + "T00:00:00").toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short", year: "numeric" }) : "";
+  const lines = [
+    "Appointment request from the Astha website",
+    `Name: ${v.name.trim()}`,
+    `Phone: ${v.phone.trim()}`,
+    v.age.trim() ? `Age: ${v.age.trim()}` : "",
+    `Concern / treatment: ${v.treatment}`,
+    `Preferred date: ${date}`,
+    `Preferred time: ${v.slot}`,
+    v.notes.trim() ? `Notes: ${v.notes.trim()}` : "",
+  ].filter(Boolean);
+  return lines.join("\n");
+}
+
+export function whatsappUrl(v: BookingInput): string {
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(whatsappMessage(v))}`;
+}

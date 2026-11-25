@@ -27,7 +27,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <a href="/#blog" className="text-sm text-moss hover:underline">All articles</a>
         </div>
       </header>
-      <div role="note" className="bg-ink px-4 py-2 text-center text-sm font-medium text-white">Demo only: no appointments or camp registrations are sent from this website.</div>
+      <div role="note" className="bg-ink px-4 py-2 text-center text-sm font-medium text-white">Demo site: the camp shown is sample content. The appointment form opens WhatsApp, and nothing is sent until you press Send.</div>
       <main className="mx-auto max-w-3xl px-5 py-14">
         <p className="text-sm uppercase tracking-widest text-saffron">{post.tag} &middot; {post.read}</p>
         <h1 className="mt-3 font-display text-4xl leading-tight text-moss-dark md:text-5xl">{post.title}</h1>
