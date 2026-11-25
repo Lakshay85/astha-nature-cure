@@ -72,18 +72,18 @@ export default function Home() {
                     <p className="text-sm leading-relaxed text-ink/70">{t.blurb}</p>
                     <ul className="mt-4 space-y-1 text-sm text-ink/80">{t.good.map((g) => <li key={g} className="flex gap-2"><span className="text-moss">&bull;</span>{g}</li>)}</ul>
                     {/* Hover reveal: calm illustration panel slides up over the card body */}
-                    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 bottom-[4.5rem] flex translate-y-6 flex-col items-center justify-center gap-3 bg-gradient-to-b from-moss-dark to-moss text-cream opacity-0 transition duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                    <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex translate-y-6 flex-col items-center justify-center gap-3 bg-gradient-to-b from-moss-dark to-moss text-cream opacity-0 transition duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
                       <div className="h-24 w-24 scale-90 text-cream/90 transition duration-700 group-hover:scale-100 [&_svg]:h-full [&_svg]:w-full"><Icon k={t.icon} /></div>
                       <div className="font-display text-2xl">{t.name}</div>
                       <div className="text-sm text-cream/70">{t.hindi}</div>
                     </div>
-                    <div className="relative z-10 mt-auto pt-5"><a href={`#book`} data-treatment={t.name} className="inline-block rounded-full bg-moss px-5 py-2 text-sm font-medium text-white transition hover:bg-moss-dark">Book &rarr;</a></div>
+                    
                   </article>
                 </Reveal>
               ))}
             </div>
                         <div className="mt-10 flex w-full flex-col items-center justify-between gap-5 rounded-3xl bg-moss-dark px-8 py-7 text-center md:flex-row md:text-left">
-              <p className="max-w-2xl text-lg font-medium text-[#ffd84d]">Tap Book on any therapy and it is pre-selected in the form below. Which mix suits you is decided at your first consultation.</p>
+              <p className="max-w-2xl text-lg font-medium text-[#ffd84d]">Not sure which therapy suits you? Which mix is right is decided at your first consultation. Request an appointment and we will take it from there.</p>
               <a href="#book" className="shrink-0 rounded-full bg-[#ffd84d] px-8 py-4 font-semibold text-moss-dark shadow-lg ring-4 ring-[#ffd84d]/30 transition hover:-translate-y-0.5 hover:bg-[#ffe27a]">Book appointment &rarr;</a>
             </div>
             <p className="mt-8 text-xs text-ink/50">Natural therapies support health alongside, not instead of, emergency or specialist medical treatment. In an emergency, go to the nearest hospital.</p>
