@@ -50,11 +50,13 @@ export default function Home() {
 
         {/* Why */}
         <section className="mx-auto max-w-6xl px-5 py-16">
-          <div className="grid gap-5 md:grid-cols-3">
-            {[["Drug-free care", "Natural therapies and yoga that work with the body instead of masking symptoms."], ["Three decades of experience", "Serving Rohtak and nearby towns since 1995 with a steady, patient-first approach."], ["One roof, many therapies", "Acupressure, hydro therapy, Ceragem, Sujok and more, combined into a plan for you."]].map(([t, d], i) => (
-              <Reveal key={t} delay={i * 120}><div className="h-full rounded-3xl bg-white p-7 shadow-sm"><h3 className="font-display text-2xl text-moss-dark">{t}</h3><p className="mt-3 text-ink/70">{d}</p></div></Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <div className="grid divide-y divide-moss/20 overflow-hidden rounded-3xl border border-moss/20 bg-white shadow-sm md:grid-cols-3 md:divide-x md:divide-y-0">
+              {[["Drug-free care", "Natural therapies and yoga that work with the body instead of masking symptoms."], ["Three decades of experience", "Serving Rohtak and nearby towns since 1995 with a steady, patient-first approach."], ["One roof, many therapies", "Acupressure, hydro therapy, Ceragem, Sujok and more, combined into a plan for you."]].map(([t, d]) => (
+                <div key={t} className="p-8"><h3 className="font-display text-2xl text-moss-dark">{t}</h3><p className="mt-3 text-ink/70">{d}</p></div>
+              ))}
+            </div>
+          </Reveal>
         </section>
 
         {/* Treatments */}
