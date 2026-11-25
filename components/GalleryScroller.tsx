@@ -1,6 +1,8 @@
 "use client";
 import { useRef, useState, useEffect, useCallback } from "react";
 
+const AUTO_MS = 4500;
+
 type Item = { src: string; cap: string; w: number; h: number };
 
 export default function GalleryScroller({ items }: { items: Item[] }) {
@@ -21,6 +23,28 @@ export default function GalleryScroller({ items }: { items: Item[] }) {
     return () => window.removeEventListener("resize", update);
   }, [update]);
 
+  const paused = useRef(false);
+  const visible = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(([e]) => { visible.current = e.isIntersecting; }, { threshold: 0.4 });
+    io.observe(el);
+    const id = window.setInterval(() => {
+      if (paused.current || !visible.current || document.hidden) return;
+      const card = el.querySelector("figure") as HTMLElement | null;
+      const step = (card?.offsetWidth ?? 280) + 16;
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) el.scrollTo({ left: 0, behavior: "smooth" });
+      else el.scrollBy({ left: step, behavior: "smooth" });
+    }, AUTO_MS);
+    return () => { window.clearInterval(id); io.disconnect(); };
+  }, []);
+
+  const pause = () => { paused.current = true; };
+  const resume = () => { paused.current = false; };
+
   const go = (dir: 1 | -1) => {
     const el = ref.current;
     if (!el) return;
@@ -32,7 +56,7 @@ export default function GalleryScroller({ items }: { items: Item[] }) {
   const btn = "absolute top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white text-moss-dark shadow-lg ring-1 ring-moss/20 transition hover:bg-moss hover:text-white disabled:pointer-events-none disabled:opacity-0";
 
   return (
-    <div className="relative mt-10">
+    <div className="relative mt-10" onMouseEnter={pause} onMouseLeave={resume} onTouchStart={pause} onTouchEnd={() => window.setTimeout(resume, 6000)} onFocus={pause} onBlur={resume}>
       <button type="button" aria-label="Previous photos" disabled={atStart} onClick={() => go(-1)} className={`${btn} -left-4 md:-left-6`}>
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M15 5l-7 7 7 7" /></svg>
       </button>
@@ -44,7 +68,7 @@ export default function GalleryScroller({ items }: { items: Item[] }) {
           <figure key={it.src} className="w-[72%] shrink-0 snap-start overflow-hidden rounded-3xl bg-white shadow-sm sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)]">
             <div className="aspect-[4/5] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={it.src} alt={it.cap} width={it.w} height={it.h} loading="lazy" draggable={false} className="h-full w-full object-cover" />
+              <img src={it.src} alt={it.cap} width={it.w} height={it.h} loading="lazy" draggable={false} className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.03]" />
             </div>
           </figure>
         ))}
