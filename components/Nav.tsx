@@ -10,7 +10,7 @@ export default function Nav() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
         <a href="#top" className="flex items-center gap-2.5 font-display text-xl text-moss-dark">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/img/logo.png" alt="" width={34} height={34} className="h-[34px] w-[34px] rounded-full" />
+          <img src="/img/logo.png" alt="" width={38} height={38} className="h-[38px] w-[38px] rounded-full ring-2 ring-white shadow" />
           Astha <span className="hidden sm:inline text-ink/60 text-base">Yoga &amp; Nature Cure Hospital</span>
         </a>
         <nav className="hidden items-center gap-7 md:flex">
