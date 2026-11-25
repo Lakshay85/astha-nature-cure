@@ -64,19 +64,19 @@ export default function Home() {
               {treatments.map((t, i) => (
                 <Reveal key={t.id} delay={(i % 4) * 90}>
                   <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+                    {/* Hover reveal: AI-generated illustration for this therapy, fades in at 50% opacity */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`/img/art-${t.id}.jpg`} alt="" aria-hidden="true" width={560} height={560} loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full scale-105 object-cover opacity-0 transition duration-700 ease-out group-hover:scale-100 group-hover:opacity-50" />
+                    <div className="relative z-10">
                     <div className="mb-4 flex items-center gap-4">
                       <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-moss/10 text-moss transition group-hover:bg-moss group-hover:text-white"><Icon k={t.icon} /></div>
                       <div className="min-w-0"><h3 className="font-display text-2xl leading-tight text-moss-dark">{t.name}</h3><div className="text-sm text-saffron">{t.hindi}</div></div>
                     </div>
                     <p className="text-sm leading-relaxed text-ink/70">{t.blurb}</p>
                     <ul className="mt-4 space-y-1 text-sm text-ink/80">{t.good.map((g) => <li key={g} className="flex gap-2"><span className="text-moss">&bull;</span>{g}</li>)}</ul>
-                    {/* Hover reveal: calm illustration panel slides up over the card body */}
-                    <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex translate-y-6 flex-col items-center justify-center gap-3 bg-gradient-to-b from-moss-dark to-moss text-cream opacity-0 transition duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
-                      <div className="h-24 w-24 scale-90 text-cream/90 transition duration-700 group-hover:scale-100 [&_svg]:h-full [&_svg]:w-full"><Icon k={t.icon} /></div>
-                      <div className="font-display text-2xl">{t.name}</div>
-                      <div className="text-sm text-cream/70">{t.hindi}</div>
-                    </div>
                     
+                    
+                  </div>
                   </article>
                 </Reveal>
               ))}
