@@ -60,20 +60,31 @@ export default function Home() {
         {/* Treatments */}
         <section id="treatments" className="bg-sand/50 py-20">
           <div className="mx-auto max-w-6xl px-5">
-            <Reveal><p className="text-sm uppercase tracking-widest text-saffron">What we treat</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Treatments and therapies</h2><p className="mt-4 max-w-2xl text-ink/70">Tap Book on any therapy and it is pre-selected in the form below. Which mix suits you is decided at your first consultation.</p></Reveal>
+            <Reveal><p className="text-sm uppercase tracking-widest text-saffron">What we treat</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Treatments and therapies</h2></Reveal>
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {treatments.map((t, i) => (
                 <Reveal key={t.id} delay={(i % 4) * 90}>
-                  <article className="group flex h-full flex-col rounded-3xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl">
-                    <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-moss/10 text-moss transition group-hover:bg-moss group-hover:text-white"><Icon k={t.icon} /></div>
-                    <h3 className="font-display text-2xl text-moss-dark">{t.name}</h3>
-                    <div className="text-sm text-saffron">{t.hindi}</div>
-                    <p className="mt-3 text-sm leading-relaxed text-ink/70">{t.blurb}</p>
+                  <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+                    <div className="mb-4 flex items-center gap-4">
+                      <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-moss/10 text-moss transition group-hover:bg-moss group-hover:text-white"><Icon k={t.icon} /></div>
+                      <div className="min-w-0"><h3 className="font-display text-2xl leading-tight text-moss-dark">{t.name}</h3><div className="text-sm text-saffron">{t.hindi}</div></div>
+                    </div>
+                    <p className="text-sm leading-relaxed text-ink/70">{t.blurb}</p>
                     <ul className="mt-4 space-y-1 text-sm text-ink/80">{t.good.map((g) => <li key={g} className="flex gap-2"><span className="text-moss">&bull;</span>{g}</li>)}</ul>
-                    <a href={`#book`} data-treatment={t.name} className="mt-auto pt-5 text-sm font-medium text-moss underline-offset-4 hover:underline">Book &rarr;</a>
+                    {/* Hover reveal: calm illustration panel slides up over the card body */}
+                    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 bottom-16 flex translate-y-6 flex-col items-center justify-center gap-3 bg-gradient-to-b from-moss-dark to-moss text-cream opacity-0 transition duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                      <div className="h-24 w-24 scale-90 text-cream/90 transition duration-700 group-hover:scale-100 [&_svg]:h-full [&_svg]:w-full"><Icon k={t.icon} /></div>
+                      <div className="font-display text-2xl">{t.name}</div>
+                      <div className="text-sm text-cream/70">{t.hindi}</div>
+                    </div>
+                    <a href={`#book`} data-treatment={t.name} className="relative z-10 mt-auto self-start rounded-full bg-moss px-5 py-2 text-sm font-medium text-white transition hover:bg-moss-dark">Book &rarr;</a>
                   </article>
                 </Reveal>
               ))}
+            </div>
+                        <div className="mt-10 flex w-full flex-col items-center justify-between gap-5 rounded-3xl bg-moss-dark px-8 py-7 text-center md:flex-row md:text-left">
+              <p className="max-w-2xl text-lg font-medium text-[#ffd84d]">Tap Book on any therapy and it is pre-selected in the form below. Which mix suits you is decided at your first consultation.</p>
+              <a href="#book" className="shrink-0 rounded-full bg-[#ffd84d] px-8 py-4 font-semibold text-moss-dark shadow-lg ring-4 ring-[#ffd84d]/30 transition hover:-translate-y-0.5 hover:bg-[#ffe27a]">Book appointment &rarr;</a>
             </div>
             <p className="mt-8 text-xs text-ink/50">Natural therapies support health alongside, not instead of, emergency or specialist medical treatment. In an emergency, go to the nearest hospital.</p>
           </div>
