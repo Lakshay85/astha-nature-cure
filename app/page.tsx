@@ -164,10 +164,39 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="bg-moss-dark py-10 text-center text-sm text-cream/70">
-        <p className="font-display text-xl text-cream">Astha Yoga &amp; Nature Cure Hospital</p>
-        <p className="mt-2 px-5">Rohtak, Haryana &middot; Since 1995</p>
-        <p className="mt-2 px-5 text-cream/50">Demo website concept. The upcoming camp and the booking form are sample content.</p>
+      <footer className="bg-moss-dark text-cream/75">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-[1.4fr_1fr_1.4fr]">
+          <div>
+            <div className="flex items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/img/logo.png" alt="" width={52} height={52} className="h-[52px] w-[52px] rounded-full ring-2 ring-white/80" />
+              <p className="font-display text-2xl text-cream">{HOSPITAL.name}</p>
+            </div>
+            <p className="mt-4 max-w-sm leading-relaxed">Yoga and drug-free natural therapies in Rohtak, serving patients since {HOSPITAL.since}.</p>
+            <p className="mt-4 text-sm">Director: <span className="text-cream">Dr. Gaurav Rajput</span></p>
+            <a href="#book" className="mt-6 inline-block rounded-full bg-saffron px-6 py-3 text-sm font-medium text-white">Book an appointment</a>
+          </div>
+          <nav aria-label="Footer">
+            <h3 className="font-display text-lg text-cream">Quick links</h3>
+            <ul className="mt-4 space-y-2 text-sm">
+              {[["Treatments", "#treatments"], ["Sample camp", "#camp"], ["Gallery", "#gallery"], ["Conditions we treat", "#conditions"], ["Blog", "#blog"], ["Book appointment", "#book"], ["Visit us", "#visit"]].map(([l, h]) => <li key={h}><a href={h} className="hover:text-white hover:underline">{l}</a></li>)}
+            </ul>
+          </nav>
+          <div>
+            <h3 className="font-display text-lg text-cream">Contact</h3>
+            <ul className="mt-4 space-y-3 text-sm">
+              <li><span className="block text-cream/50">Address</span>{HOSPITAL.address}</li>
+              <li><span className="block text-cream/50">Phone</span><a className="hover:text-white hover:underline" href={`tel:${HOSPITAL.tel}`}>{HOSPITAL.phone}</a></li>
+              <li><span className="block text-cream/50">Email</span><a className="hover:text-white hover:underline" href={`mailto:${HOSPITAL.email}`}>{HOSPITAL.email}</a></li>
+              <li><span className="block text-cream/50">Timings</span>{HOSPITAL.timings}</li>
+              <li><a className="font-medium text-saffron hover:underline" href={HOSPITAL.map} target="_blank" rel="noopener noreferrer">Get directions &rarr;</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-white/10 px-5 py-5 text-center text-xs text-cream/55">
+          <p>Demo website concept. The upcoming camp and the booking form are sample content. No appointments or registrations are sent from this site.</p>
+          <p className="mt-1">&copy; {HOSPITAL.name}, Rohtak, Haryana. Natural therapies support, and do not replace, medical care.</p>
+        </div>
       </footer>
       <script dangerouslySetInnerHTML={{ __html: `document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-treatment]');if(a){window.__pick=a.getAttribute('data-treatment');setTimeout(function(){var s=document.getElementById('f-treatment');if(s){var o=[].slice.call(s.options).find(function(x){return x.text.indexOf(window.__pick)===0});if(o){var set=Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set;set.call(s,o.value||o.text);s.dispatchEvent(new Event('change',{bubbles:true}));}}},50)}});` }} />
     </>
