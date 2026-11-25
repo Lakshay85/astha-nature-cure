@@ -46,7 +46,6 @@ export default function GalleryScroller({ items }: { items: Item[] }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={it.src} alt={it.cap} width={it.w} height={it.h} loading="lazy" draggable={false} className="h-full w-full object-cover" />
             </div>
-            <figcaption className="px-5 py-3 text-sm font-medium text-moss-dark">{it.cap}</figcaption>
           </figure>
         ))}
       </div>
