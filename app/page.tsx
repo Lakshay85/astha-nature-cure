@@ -104,7 +104,7 @@ export default function Home() {
         <section id="gallery" className="mx-auto max-w-6xl px-5 py-20">
           <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Inside the hospital</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Our hospital and people</h2></Reveal>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[["/img/reception.jpg", "Reception", 358, 478], ["/img/team.jpg", "Our team", 638, 478], ["/img/team2.jpg", "Our team", 638, 478], ["/img/camp.jpg", "Community health camp", 638, 478]].map(([src, cap, w, h], i) => (
+            {[["/img/reception.jpg", "Reception", 358, 478], ["/img/team.jpg", "Our team", 638, 478], ["/img/team2.jpg", "Our team", 638, 478], ["/img/doctor-desk.jpg", "Dr. Gaurav Rajput", 540, 960], ["/img/camp.jpg", "Community health camp", 638, 478]].map(([src, cap, w, h], i) => (
               <Reveal key={src as string} delay={i * 90}>
                 <figure className="group overflow-hidden rounded-3xl bg-white shadow-sm">
                   <div className="aspect-[4/5] overflow-hidden">
@@ -115,6 +115,33 @@ export default function Home() {
                 </figure>
               </Reveal>
             ))}
+          </div>
+        </section>
+
+        {/* Hospital tour */}
+        <section id="tour" className="bg-sand/50 py-20">
+          <div className="mx-auto max-w-6xl px-5">
+            <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Take a look inside</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">A walk through the hospital</h2><p className="mt-4 max-w-2xl text-ink/70">From the entrance and reception to the consultation room and therapy area. Clip from the hospital&apos;s own Instagram.</p></Reveal>
+            <div className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+              <Reveal>
+                <div className="overflow-hidden rounded-3xl bg-ink shadow-xl">
+                  <video controls playsInline preload="none" poster="/img/tour-poster.jpg" className="aspect-video w-full" aria-label="Walkthrough of Astha Yoga & Nature Cure Hospital">
+                    <source src="/img/tour.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </Reveal>
+              <div className="grid grid-cols-2 gap-4">
+                {[["/img/tour-reception.jpg", "Reception"], ["/img/tour-waiting.jpg", "Waiting area"], ["/img/tour-consult.jpg", "Consultation room"], ["/img/tour-therapy.jpg", "Therapy area"]].map(([src, cap], i) => (
+                  <Reveal key={src} delay={i * 90}>
+                    <figure className="overflow-hidden rounded-2xl bg-white shadow-sm">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={src} alt={cap} width={480} height={270} loading="lazy" className="aspect-video w-full object-cover" />
+                      <figcaption className="px-3 py-2 text-sm font-medium text-moss-dark">{cap}</figcaption>
+                    </figure>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
