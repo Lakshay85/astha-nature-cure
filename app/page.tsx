@@ -82,11 +82,7 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
-                        <div className="mt-10 flex w-full flex-col items-center justify-between gap-5 rounded-3xl bg-moss-dark px-8 py-7 text-center md:flex-row md:text-left">
-              <p className="max-w-2xl text-lg font-medium text-[#ffd84d]">Not sure which therapy suits you? Which mix is right is decided at your first consultation. Request an appointment and we will take it from there.</p>
-              <a href="#book" className="shrink-0 rounded-full bg-[#ffd84d] px-8 py-4 font-semibold text-moss-dark shadow-lg ring-4 ring-[#ffd84d]/30 transition hover:-translate-y-0.5 hover:bg-[#ffe27a]">Book appointment &rarr;</a>
-            </div>
-            <p className="mt-8 text-xs text-ink/50">Natural therapies support health alongside, not instead of, emergency or specialist medical treatment. In an emergency, go to the nearest hospital.</p>
+                        <p className="mt-8 text-xs text-ink/50">Natural therapies support health alongside, not instead of, emergency or specialist medical treatment. In an emergency, go to the nearest hospital.</p>
           </div>
         </section>
 
