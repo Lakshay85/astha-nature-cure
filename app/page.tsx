@@ -3,6 +3,7 @@ import Reveal from "@/components/Reveal";
 import Booking from "@/components/Booking";
 import Countdown from "@/components/Countdown";
 import { Icon, Leaf, Mandala } from "@/components/Icons";
+import { posts, BYLINE } from "@/lib/posts";
 import { treatments, camp, conditions, HOSPITAL } from "@/lib/data";
 
 export default function Home() {
@@ -124,6 +125,25 @@ export default function Home() {
             {conditions.map((c, i) => (
               <Reveal key={c} delay={(i % 6) * 60}><span className="inline-block rounded-full border border-moss/25 bg-white px-5 py-2.5 text-moss-dark shadow-sm transition hover:-translate-y-0.5 hover:bg-moss hover:text-white">{c}</span></Reveal>
             ))}
+          </div>
+        </section>
+
+        {/* Blog */}
+        <section id="blog" className="bg-sand/50 py-20">
+          <div className="mx-auto max-w-6xl px-5">
+            <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Health reading</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">From the blog</h2><p className="mt-4 max-w-2xl text-ink/70">General education from the {BYLINE}. It is not medical advice. A physician will assess your case.</p></Reveal>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {posts.map((p, i) => (
+                <Reveal key={p.slug} delay={i * 90}>
+                  <a href={`/blog/${p.slug}`} className="group flex h-full flex-col rounded-3xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+                    <div className="text-xs uppercase tracking-widest text-saffron">{p.tag}</div>
+                    <h3 className="mt-2 font-display text-2xl text-moss-dark">{p.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-ink/70">{p.excerpt}</p>
+                    <span className="mt-auto pt-5 text-sm font-medium text-moss underline-offset-4 group-hover:underline">Read &middot; {p.read} &rarr;</span>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 
