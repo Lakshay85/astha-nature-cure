@@ -152,18 +152,30 @@ export default function Home() {
 
         {/* Reviews */}
         <section id="reviews" className="mx-auto max-w-6xl px-5 py-20">
-          <Reveal><p className="text-sm uppercase tracking-widest text-saffron">Patient reviews</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">What patients say</h2><p className="mt-4 max-w-2xl text-ink/70">Public reviews from our Google listing, shown as written.</p></Reveal>
+          <Reveal>
+            <div className="text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border border-moss/20 bg-white px-4 py-1.5 text-sm font-medium text-moss-dark"><span className="text-saffron" aria-hidden="true">&#9733;</span>4.3 on Google &middot; Serving Rohtak since 1995</span>
+              <h2 className="mt-4 font-display text-4xl text-moss-dark md:text-5xl">What Our Patients Say</h2>
+              <p className="mx-auto mt-3 max-w-2xl text-ink/70">Public reviews from our Google listing, shown as written.</p>
+            </div>
+          </Reveal>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {[
-              { name: "Akhilesh", meta: "Google Local Guide", text: "Uncle ji Nice \u{1F44D} clinic", note: null },
-              { name: "Sam", meta: "Google review", text: "\u0915\u0932\u094D\u092A\u0924\u0930\u0941 \u0915\u0940 \u0924\u0930\u0939 \u0939\u0940 \u092E\u0930\u094D\u091C \u0915\u0940 \u0926\u0935\u093E", note: "English: \u201CMedicine for the disease is like Kalpataru\u201D (translated by Google)" },
+              { name: "Akhilesh", initials: "A", meta: "Google Local Guide", text: "Uncle ji Nice \u{1F44D} clinic", note: null },
+              { name: "Sam", initials: "S", meta: "Google review", text: "\u0915\u0932\u094D\u092A\u0924\u0930\u0941 \u0915\u0940 \u0924\u0930\u0939 \u0939\u0940 \u092E\u0930\u094D\u091C \u0915\u0940 \u0926\u0935\u093E", note: "English: \u201CMedicine for the disease is like Kalpataru\u201D (translated by Google)" },
             ].map((r, i) => (
               <Reveal key={r.name} delay={i * 100}>
-                <figure className="flex h-full flex-col rounded-3xl bg-white p-7 shadow-sm">
-                  <div className="text-xl tracking-widest text-saffron" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                  <blockquote className="mt-4 font-display text-2xl leading-snug text-moss-dark">&ldquo;{r.text}&rdquo;</blockquote>
+                <figure className="flex h-full flex-col rounded-3xl border border-moss/10 bg-white p-7 shadow-sm">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-moss-dark font-display text-xl text-cream" aria-hidden="true">{r.initials}</div>
+                    <figcaption className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5 font-medium text-ink">{r.name}<svg viewBox="0 0 24 24" width="16" height="16" className="shrink-0 text-moss" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-label="Google reviewer"><circle cx="12" cy="12" r="9" /><path d="M8 12.5l3 3 5-6" /></svg></div>
+                      <div className="text-sm text-ink/55">{r.meta}</div>
+                    </figcaption>
+                    <div className="text-base tracking-wider text-saffron" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  </div>
+                  <blockquote className="mt-5 font-display text-2xl leading-snug text-moss-dark">&ldquo;{r.text}&rdquo;</blockquote>
                   {r.note && <p className="mt-2 text-sm text-ink/55">{r.note}</p>}
-                  <figcaption className="mt-auto pt-6 text-sm"><span className="font-medium text-ink">{r.name}</span><span className="text-ink/55"> &middot; {r.meta}</span></figcaption>
                 </figure>
               </Reveal>
             ))}
@@ -178,7 +190,7 @@ export default function Home() {
               </div>
             </Reveal>
           </div>
-          <p className="mt-6 text-xs text-ink/50">Reviews are from Google as of 25 November 2026 and may change. They are one person&apos;s experience and not a promise of results.</p>
+          <p className="mt-6 text-center text-xs text-ink/50">Reviews are from Google as of 25 November 2026 and may change. They are one person&apos;s experience and not a promise of results.</p>
         </section>
 
         {/* Conditions */}
