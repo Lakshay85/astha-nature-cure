@@ -18,17 +18,29 @@ describe("validateBooking", () => {
 
 import { whatsappUrl, whatsappMessage, WA_NUMBER } from "../lib/validate";
 describe("whatsapp link", () => {
-  const v = { name: "Asha Verma", phone: "9876543210", age: "45", treatment: "Yoga", date: "2026-12-01", slot: "6:30 AM", notes: "Back pain & stiffness" };
-  it("targets the configured number", () => {
-    expect(whatsappUrl(v).startsWith(`https://wa.me/${WA_NUMBER}?text=`)).toBe(true);
+  const v = { name: "Lakshay", phone: "9911490501", age: "25", treatment: "Yoga", date: "2026-11-26", slot: "10:30 AM", notes: "" };
+  const sample = [
+    "\u{1F3E5} *New Appointment Request - Astha Hospital*",
+    "",
+    "\u{1F464} *Name:* Lakshay",
+    "\u{1F4DE} *Phone:* 9911490501",
+    "\u{1F382} *Age:* 25",
+    "\u{1FA7A} *Treatment:* Yoga",
+    "\u{1F4C5} *Date:* Thu, 26 Nov 2026",
+    "\u23F0 *Time:* 10:30 AM",
+  ].join("\n");
+  it("matches the agreed layout exactly", () => expect(whatsappMessage(v)).toBe(sample));
+  it("targets the configured number and encodes line breaks as %0A", () => {
+    const u = whatsappUrl(v);
+    expect(u.startsWith(`https://wa.me/${WA_NUMBER}?text=`)).toBe(true);
     expect(WA_NUMBER).toBe("919911490501");
+    expect(u).toContain("%0A");
+    expect(u).not.toMatch(/[\u{1F300}-\u{1FAFF}\n ]/u);
+    expect(decodeURIComponent(u.split("text=")[1])).toBe(sample);
   });
-  it("round-trips every detail through encoding", () => {
-    const text = decodeURIComponent(whatsappUrl(v).split("text=")[1]);
-    for (const x of ["Asha Verma", "9876543210", "45", "Yoga", "6:30 AM", "Back pain & stiffness"]) expect(text).toContain(x);
-    expect(text).toBe(whatsappMessage(v));
-  });
-  it("omits empty optional fields", () => {
-    expect(whatsappMessage({ ...v, age: "", notes: "" })).not.toMatch(/Age:|Notes:/);
+  it("skips Age and Notes when not given, and adds Notes when given", () => {
+    expect(whatsappMessage({ ...v, age: "" })).not.toContain("Age:");
+    expect(whatsappMessage(v)).not.toContain("Notes:");
+    expect(whatsappMessage({ ...v, notes: "Back pain" })).toContain("*Notes:* Back pain");
   });
 });

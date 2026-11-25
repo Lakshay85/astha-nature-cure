@@ -26,19 +26,29 @@ export function reference(v: BookingInput): string {
 
 export const WA_NUMBER = "919911490501";
 
+const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+export function formatDateShort(iso: string): string {
+  const d = new Date(iso + "T00:00:00");
+  if (isNaN(d.getTime())) return "";
+  return `${DAYS[d.getDay()]}, ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+}
+
 export function whatsappMessage(v: BookingInput): string {
-  const date = v.date ? new Date(v.date + "T00:00:00").toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short", year: "numeric" }) : "";
   const lines = [
-    "Appointment request from the Astha website",
-    `Name: ${v.name.trim()}`,
-    `Phone: ${v.phone.trim()}`,
-    v.age.trim() ? `Age: ${v.age.trim()}` : "",
-    `Concern / treatment: ${v.treatment}`,
-    `Preferred date: ${date}`,
-    `Preferred time: ${v.slot}`,
-    v.notes.trim() ? `Notes: ${v.notes.trim()}` : "",
-  ].filter(Boolean);
-  return lines.join("\n");
+    "\u{1F3E5} *New Appointment Request - Astha Hospital*",
+    "",
+    `\u{1F464} *Name:* ${v.name.trim()}`,
+    `\u{1F4DE} *Phone:* ${v.phone.trim()}`,
+    v.age.trim() ? `\u{1F382} *Age:* ${v.age.trim()}` : "",
+    `\u{1FA7A} *Treatment:* ${v.treatment}`,
+    `\u{1F4C5} *Date:* ${formatDateShort(v.date)}`,
+    `\u23F0 *Time:* ${v.slot}`,
+    v.notes.trim() ? `\u{1F4DD} *Notes:* ${v.notes.trim()}` : "",
+  ];
+  // keep the blank line after the header, drop only the optional lines that are empty
+  return lines.filter((l, i) => l !== "" || i === 1).join("\n");
 }
 
 export function whatsappUrl(v: BookingInput): string {
