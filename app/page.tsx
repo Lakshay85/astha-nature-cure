@@ -2,10 +2,9 @@ import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
 import GalleryScroller from "@/components/GalleryScroller";
 import Booking from "@/components/Booking";
-import Countdown from "@/components/Countdown";
 import { Icon, Leaf, Mandala } from "@/components/Icons";
 import { posts, BYLINE } from "@/lib/posts";
-import { treatments, camp, conditions, HOSPITAL } from "@/lib/data";
+import { treatments, conditions, HOSPITAL } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -83,27 +82,6 @@ export default function Home() {
               ))}
             </div>
                         <p className="mt-8 text-xs text-ink/50">Natural therapies support health alongside, not instead of, emergency or specialist medical treatment. In an emergency, go to the nearest hospital.</p>
-          </div>
-        </section>
-
-        {/* Camp */}
-        <section id="camp" className="relative overflow-hidden bg-moss-dark py-20 text-cream">
-          <Mandala className="spin-slow pointer-events-none absolute -left-32 top-1/2 h-[36rem] w-[36rem] -translate-y-1/2 text-white/10" />
-          <div className="relative mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-2">
-            <Reveal>
-              <p className="inline-block rounded-full bg-saffron px-4 py-1 text-sm font-medium text-white">Sample camp (demo) &middot; Not a real event</p>
-              <h2 className="mt-4 font-display text-4xl md:text-5xl">{camp.title}</h2>
-              <p className="mt-4 text-lg text-cream/80">{camp.date}<br />{camp.time}<br />{camp.where}</p>
-              <div className="mt-7"><Countdown to={camp.iso} /></div>
-              <a href="#book" className="mt-8 inline-block rounded-full bg-saffron px-8 py-4 font-medium text-white shadow-lg transition hover:-translate-y-0.5">See sample camp registration (demo)</a>
-            </Reveal>
-            <Reveal delay={150}>
-              <div className="rounded-3xl bg-white/10 p-7 backdrop-blur">
-                <h3 className="font-display text-2xl">What you get</h3>
-                <ul className="mt-4 space-y-3">{camp.includes.map((c) => <li key={c} className="flex gap-3"><svg viewBox="0 0 24 24" width="22" height="22" className="mt-0.5 shrink-0 text-saffron" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5 9-10" /></svg>{c}</li>)}</ul>
-                <p className="mt-5 text-sm text-cream/60">This camp is invented sample content for the website demo. It is not a real event.</p>
-              </div>
-            </Reveal>
           </div>
         </section>
 
@@ -206,7 +184,7 @@ export default function Home() {
         <section id="book" className="bg-gradient-to-b from-sand/60 to-cream py-20">
           <div className="mx-auto max-w-4xl px-5">
             <Reveal><div className="mb-10 text-center"><p className="text-sm uppercase tracking-widest text-saffron">Book a visit</p><h2 className="mt-2 font-display text-4xl text-moss-dark md:text-5xl">Request an appointment</h2><p className="mt-3 text-ink/70">The form opens WhatsApp with your details ready to send. Prefer to call? <a className="font-medium text-moss underline" href={`tel:${HOSPITAL.tel}`}>{HOSPITAL.phone}</a>.</p></div></Reveal>
-            <Reveal><div role="note" className="mb-4 rounded-2xl border-2 border-saffron bg-saffron/10 px-5 py-3 text-center font-medium text-ink">Appointment requests open in WhatsApp. Nothing is sent until you press Send there. The camp shown on this site is sample content.</div><Booking /></Reveal>
+            <Reveal><div role="note" className="mb-4 rounded-2xl border-2 border-saffron bg-saffron/10 px-5 py-3 text-center font-medium text-ink">Appointment requests open in WhatsApp. Nothing is sent until you press Send there.</div><Booking /></Reveal>
           </div>
         </section>
 
@@ -234,7 +212,7 @@ export default function Home() {
           <nav aria-label="Footer">
             <h3 className="font-display text-lg text-cream">Quick links</h3>
             <ul className="mt-4 space-y-2 text-sm">
-              {[["Treatments", "#treatments"], ["Sample camp", "#camp"], ["Gallery", "#gallery"], ["Conditions we treat", "#conditions"], ["Reviews", "#reviews"], ["Blog", "#blog"], ["Book appointment", "#book"], ["Visit us", "#visit"]].map(([l, h]) => <li key={h}><a href={h} className="hover:text-white hover:underline">{l}</a></li>)}
+              {[["Treatments", "#treatments"], ["Gallery", "#gallery"], ["Conditions we treat", "#conditions"], ["Reviews", "#reviews"], ["Blog", "#blog"], ["Book appointment", "#book"], ["Visit us", "#visit"]].map(([l, h]) => <li key={h}><a href={h} className="hover:text-white hover:underline">{l}</a></li>)}
             </ul>
           </nav>
           <div>
@@ -249,7 +227,7 @@ export default function Home() {
           </div>
         </div>
         <div className="border-t border-white/10 px-5 py-5 text-center text-xs text-cream/55">
-          <p>Demo website. The upcoming camp is sample content. The appointment form opens WhatsApp and nothing is sent until you press Send there.</p>
+          <p>The appointment form opens WhatsApp and nothing is sent until you press Send there.</p>
           <p className="mt-1">&copy; {HOSPITAL.name}, Rohtak, Haryana. Natural therapies support, and do not replace, medical care.</p>
         </div>
       </footer>

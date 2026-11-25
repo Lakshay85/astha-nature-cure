@@ -25,14 +25,5 @@ export const treatments: Treatment[] = [
 
 export const conditions = ["Cervical", "Back pain", "Joint and knee pain", "Sinus", "Migraine", "Paralysis", "Depression", "Obesity", "Digestion", "Parkinson's", "Diabetes", "Heart conditions"];
 
-export const camp = {
-  title: "Free Yoga and Natural Health Check-up Camp",
-  date: "Sunday, 13 December 2026",
-  iso: "2026-12-13T08:00:00+05:30",
-  time: "8:00 AM to 12:00 noon",
-  where: "Astha Yoga & Nature Cure Hospital, Shivaji Colony, Rohtak",
-  includes: ["Free consultation with our physicians", "Back, joint and posture screening", "Blood sugar and BMI check", "Live yoga and pranayama session", "Diet and daily routine guidance"],
-};
-
 export const slots = ["6:30 AM", "7:30 AM", "8:30 AM", "9:30 AM", "10:30 AM", "11:30 AM", "12:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM"];
 
