@@ -31,8 +31,9 @@ export default function Home() {
               <p className="mt-6 max-w-xl text-lg text-ink/75">For over 30 years, Astha Yoga & Nature Cure Hospital in Rohtak has helped patients manage pain, stress and lifestyle conditions with yoga and drug-free natural therapies.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href="#book" className="rounded-full bg-moss px-8 py-4 font-medium text-white shadow-lg shadow-moss/30 transition hover:-translate-y-0.5 hover:bg-moss-dark">Book an appointment</a>
-                <a href="#treatments" className="rounded-full border border-moss/40 px-8 py-4 font-medium text-moss transition hover:bg-moss/10">Explore treatments</a>
+                <a href={`tel:${HOSPITAL.tel}`} className="rounded-full border-2 border-moss px-8 py-[0.9rem] font-medium text-moss transition hover:bg-moss hover:text-white">Call: {HOSPITAL.phone}</a>
               </div>
+              <p className="mt-4 text-sm text-ink/65"><span className="text-saffron">&#9733;</span> 4.3 on Google (4 reviews) &middot; Serving Rohtak since 1995 &middot; <a href="#treatments" className="underline underline-offset-4 hover:text-moss">Explore treatments</a></p>
               <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ink/70">
                 <li><b className="font-display text-2xl text-moss-dark">1995</b> established</li>
                 <li><b className="font-display text-2xl text-moss-dark">30+</b> years of experience</li>
@@ -44,8 +45,21 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/img/director.jpg" alt="Dr. Gaurav Rajput, Director" width={636} height={848} className="h-full w-full object-cover object-top" fetchPriority="high" />
               </div>
+              <div className="float absolute -left-10 bottom-24 hidden h-36 w-36 overflow-hidden rounded-[58%_42%_55%_45%/48%_58%_42%_52%] bg-moss shadow-xl ring-4 ring-cream lg:block" style={{ "--r": "-6deg" } as React.CSSProperties}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/img/entrance.jpg" alt="Astha hospital entrance" width={144} height={144} className="h-full w-full object-cover object-center" />
+              </div>
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-2xl bg-white px-6 py-3 text-center shadow-xl"><div className="text-xs uppercase tracking-widest text-saffron">Meet the director</div><div className="font-display text-xl text-moss-dark">Dr. Gaurav Rajput</div><div className="text-sm text-ink/60">Director</div></div>
             </div>
+          </div>
+        </section>
+
+        {/* Trust strip */}
+        <section aria-label="Why patients trust us" className="bg-moss-dark text-cream">
+          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-5 py-8 text-center md:grid-cols-4">
+            {[["Since 1995", "Established in Rohtak"], ["30+ years", "Of natural therapy practice"], ["Drug-free care", "Yoga and natural therapies"], ["Rohtak, Haryana", "Shivaji Colony"]].map(([a, b]) => (
+              <div key={a}><div className="font-display text-2xl">{a}</div><div className="mt-1 text-sm text-cream/70">{b}</div></div>
+            ))}
           </div>
         </section>
 
